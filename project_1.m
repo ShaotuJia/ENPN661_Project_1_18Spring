@@ -12,8 +12,9 @@ Nodes(:,:,1) = [1 2 3; 4 5 6; 7 8 0];
 NodeInfo(:,:,1) = [1,0,0];
 
 
-[X, Y] = BlankTileLocation(Nodes(:,:,1));
-
+% TEST
+%[X, Y] = BlankTileLocation(Nodes(:,:,1));
+[Status, NewNode] = ActionMoveLeft(Nodes(:,:,1));
 
 
 % functions for this program
@@ -43,7 +44,7 @@ function [Status, NewNode] = ActionMoveLeft(CurrentNode)
         targetY = Y0 - 1;
         
         LinearIndexBlankTile = (Y0 - 1) * 3 + X0;
-        LinearIndexTarget = (targetY - 2) * 3 + targetX;
+        LinearIndexTarget = (targetY - 1) * 3 + targetX;
         
         CurrentNode([LinearIndexBlankTile LinearIndexTarget])...
             = CurrentNode([LinearIndexTarget LinearIndexBlankTile]);
