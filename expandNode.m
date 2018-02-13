@@ -9,38 +9,47 @@ function [NodeInfoSet, NewNodeSet] = expandNode(CurrentNode, NodeInfo)
     
     NewNodeSet = [];        % initial NodeSet
     NodeInfoSet =[];        % initial Node Info Set
-    counter = NodeInfo(1);            % count number of new nodes
+    counter = 0;            % count number of new nodes
+    NodeNum = NodeInfo(1);  % Node Number          
     
     % add left move node to NewNodeSet if left_status is true
     [left_status, leftNode] = ActionMoveLeft(CurrentNode);
     if (left_status == true) 
-        counter = counter + 1;
+        counter = counter + 1;                  % add 1 for counter
+        NodeNum = NodeNum + 1;                  % add 1 for node number
         NewNodeSet(:,:,counter) = leftNode;     % update NewNodeSet
-        NodeInfoSet(counter, NodeInfo(1), 0);   % update NodeInfoSet
+        Left_Node_Info = [NodeNum, NodeInfo(1), 0];  % Info of Move left
+        NodeInfoSet(:,:, counter) = Left_Node_Info;   % update NodeInfoSet
     end
     
     % add right move node to NewNodeSet if right_status is true
     [right_status, rightNode] = ActionMoveRight(CurrentNode);
     if (right_status == true) 
-        counter = counter + 1;
+        counter = counter + 1;                  % add 1 for counter
+        NodeNum = NodeNum + 1;                  % add 1 for node number
         NewNodeSet(:,:,counter) = rightNode;    % update NewNodeSet
-        NodeInfoSet(counter, NodeInfo(1), 0);   % update NodeInfoSet
+        Right_Node_Info = [NodeNum, NodeInfo(1), 0];    % Info of Move right
+        NodeInfoSet(:,:,counter) = Right_Node_Info;   % update NodeInfoSet
     end
     
     % add up move node to NewNodeSet if up_status is true
     [up_status, upNode] = ActionMoveUp(CurrentNode);
     if (up_status == true) 
-        counter = counter + 1;
+        counter = counter + 1;                  % add 1 for counter
+        NodeNum = NodeNum + 1;                  % add 1 for node number
         NewNodeSet(:,:,counter) = upNode;       % update NewNodeSet
-        NodeInfoSet(counter, NodeInfo(1), 0);   % update NodeInfoSet
+        Up_Node_Info = [NodeNum, NodeInfo(1), 0];   % Info of Move up
+        NodeInfoSet(:,:,counter) = Up_Node_Info;   % update NodeInfoSet
     end
     
     % add up move node to NewNodeSet if up_status is true
     [down_status, downNode] = ActionMoveDown(CurrentNode);
     if (down_status == true) 
-        counter = counter + 1;
+        counter = counter + 1;                  % add 1 for counter
+        NodeNum = NodeNum + 1;                  % add 1 for node number
         NewNodeSet(:,:,counter) = downNode;     % update NewNodeSet
-        NodeInfoSet(counter, NodeInfo(1), 0);   % update NodeInfoSet
+        Down_Node_Info = [NodeNum, NOdeInfo(1), 0];  % Info of Move Down
+        NodeInfoSet(:,:,counter) = Down_Node_Info;   % update NodeInfoSet
     end
     
     

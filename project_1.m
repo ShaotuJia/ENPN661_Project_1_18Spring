@@ -11,8 +11,12 @@ NodeInfo = [];          % NodeInfo = [Node #, Parent node#, CostToCome]
 Nodes(:,:,1) = [1 2 3; 4 5 6; 7 0 8];
 NodeInfo(:,:,1) = [1,0,0];
 
+% Node Set
+NodeSet.Nodes = Nodes;
+NodeSet.NodeInfo = NodeInfo;
 
 % TEST
 %[X, Y] = BlankTileLocation(Nodes(:,:,1));
-[Status, NewNode] = ActionMoveUp(Nodes(:,:,1));
+%[Status, NewNode] = ActionMoveUp(Nodes(:,:,1));
+[NodeInfoSet, NewNodeSet] = expandNode(Nodes(:,:,1),NodeInfo(:,:,1));
 
