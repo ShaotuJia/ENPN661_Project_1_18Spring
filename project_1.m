@@ -22,13 +22,14 @@ NodeSet.NodeInfo = NodeInfo;
 
 % search 100,000 nodes
 openSet = [];               % FIFO Queue; the nodes have not explored
-closeSet = [];              % the nodes have explored
+closeSet.Nodes = [];              % the nodes have explored
+closeSet.NodeInfo = [];
 
 % Search algorithm; Breath first search;
 openSet.Nodes = Nodes;
 openSet.NodeInfo = NodeInfo;
 
-while ~isempty(openSet.Nodes)
+while size(closeSet.Nodes, 3)<=100000 
     
     currentNode = openSet.Nodes(:,:,1);             % pop up first element in openSet
     currentNodeInfo = openSet.NodeInfo(:,:,1);
@@ -36,7 +37,18 @@ while ~isempty(openSet.Nodes)
     openSet.NodeInfo(:,:,1) = [];
     
     % expand currentNode and currentNodeInfo
+    [NewNodeInfoSet, NewNodeSet] = expandNode(currentNode, currentNodeInfo);
     
+    % remove the node repeated in closeSet
+    [NewNodeInfoSet, NewNodeSet] = removeRepeat(NewNodeInfoSet, NewNodeSet, closeSet);
+    
+    % add currentNode to closeSet
+    closeSet.Nodes = cat(3, closeSet.Nodes, currentNode);
+    closeSet.NodeInfo = cat(3, closeSet.NodeInfo, currentNodeInfo);
+    
+    % add NewNodeInfoSet and NewNodeSet to openSet
+    openSet.Nodes = cat(3, openSet.Nodes, NewNodeSet);
+    openSet.NodeInfo = cat(3, openSet.NodeInfo, NewNodeInfoSet);
     
 end
 

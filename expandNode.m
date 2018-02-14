@@ -48,7 +48,7 @@ function [NodeInfoSet, NewNodeSet] = expandNode(CurrentNode, NodeInfo)
         counter = counter + 1;                  % add 1 for counter
         NodeNum = NodeNum + 1;                  % add 1 for node number
         NewNodeSet(:,:,counter) = downNode;     % update NewNodeSet
-        Down_Node_Info = [NodeNum, NOdeInfo(1), 0];  % Info of Move Down
+        Down_Node_Info = [NodeNum, NodeInfo(1), 0];  % Info of Move Down
         NodeInfoSet(:,:,counter) = Down_Node_Info;   % update NodeInfoSet
     end
     
