@@ -10,7 +10,7 @@ function [NodeInfoSet, NewNodeSet] = expandNode(CurrentNode, NodeInfo)
     NewNodeSet = [];        % initial NodeSet
     NodeInfoSet =[];        % initial Node Info Set
     counter = 0;            % count number of new nodes
-    NodeNum = NodeInfo(1);  % Node Number          
+    NodeNum = NodeInfo(1);  % Node Number
     
     % add left move node to NewNodeSet if left_status is true
     [left_status, leftNode] = ActionMoveLeft(CurrentNode);

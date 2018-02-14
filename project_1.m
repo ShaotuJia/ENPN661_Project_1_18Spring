@@ -20,3 +20,19 @@ NodeSet.NodeInfo = NodeInfo;
 %[Status, NewNode] = ActionMoveUp(Nodes(:,:,1));
 [NodeInfoSet, NewNodeSet] = expandNode(Nodes(:,:,1),NodeInfo(:,:,1));
 
+% search 100,000 nodes
+openSet = [];               % FIFO Queue; the nodes have not explored
+closeSet = [];              % the nodes have explored
+
+% Search algorithm
+openSet(:,:,1) = Nodes;
+
+while ~isempty(openSet)
+    
+    
+end
+
+
+
+
+
