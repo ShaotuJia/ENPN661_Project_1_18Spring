@@ -24,10 +24,18 @@ NodeSet.NodeInfo = NodeInfo;
 openSet = [];               % FIFO Queue; the nodes have not explored
 closeSet = [];              % the nodes have explored
 
-% Search algorithm
-openSet(:,:,1) = Nodes;
+% Search algorithm; Breath first search;
+openSet.Nodes = Nodes;
+openSet.NodeInfo = NodeInfo;
 
-while ~isempty(openSet)
+while ~isempty(openSet.Nodes)
+    
+    currentNode = openSet.Nodes(:,:,1);             % pop up first element in openSet
+    currentNodeInfo = openSet.NodeInfo(:,:,1);
+    openSet.Nodes(:,:,1) = [];
+    openSet.NodeInfo(:,:,1) = [];
+    
+    % expand currentNode and currentNodeInfo
     
     
 end

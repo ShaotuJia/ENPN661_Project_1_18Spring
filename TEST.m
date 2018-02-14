@@ -11,12 +11,12 @@ D = [0 1 2; 3 4 5; 6 7 8];
 
 
 % Declare NodeSet for test
-NodeSet = [];
+Nodes = [];
 
-NodeSet(:,:,1) = A;
-NodeSet(:,:,2) = B;
-NodeSet(:,:,3) = C;
-NodeSet(:,:,4) = D;
+Nodes(:,:,1) = A;
+Nodes(:,:,2) = B;
+Nodes(:,:,3) = C;
+Nodes(:,:,4) = D;
 
 
 % Declare NodeInfo for test
@@ -35,17 +35,30 @@ F = [99 88 77; 66 55 44; 33 22 11];
 G = [22 11 33; 66 55 44; 99 88 77];
 H = [12 34 55; 56 76 89; 32 54 57];
 
-closeSet(:,:,1) = E;
-closeSet(:,:,2) = F;
-closeSet(:,:,3) = G;
-closeSet(:,:,4) = H;
+%closeSet(:,:,1) = E;
+%closeSet(:,:,2) = F;
+%closeSet(:,:,3) = G;
+%closeSet(:,:,4) = H;
 %closeSet(:,:,5) = A;
 
 
 % test function removeRepeat 
-[NewInfoSet, NewNodeSet] = removeRepeat(NodeInfo, NodeSet, closeSet);
+%[NewInfoSet, NewNodeSet] = removeRepeat(NodeInfo, NodeSet, closeSet);
 
 %status = isInSet(A, closeSet);
+
+% Test finish expamdNode
+
+start_node = [1 2 3; 4 5 6; 7 0 8];
+node_info = [1, 0, 0];
+
+%[NodeInfoSet, NewNodeTest] = expandNode(start_node, node_info);
+NodeSet.Nodes = Nodes;
+NodeSet.NodeInfo = NodeInfo;
+
+NodeSet.Nodes(:,:,1) = [];
+
+
 
 
 
