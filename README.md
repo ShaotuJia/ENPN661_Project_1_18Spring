@@ -5,7 +5,7 @@ This project is to expand 100,000 nodes on a 8-puzzle game; Given a initial stat
 ## Installation:
 - git clone this repository
 ```
-https://github.com/ShaotuJia/ENPN661_Project_1_18Spring.git
+git clone https://github.com/ShaotuJia/ENPN661_Project_1_18Spring.git
 ```
 ## Run Program
 - open main.m file in this repository 
